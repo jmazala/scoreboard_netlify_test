@@ -1,0 +1,6 @@
+.netlify
+build
+build/*
+.DS_Store
+.nvmrc
+node_modules
