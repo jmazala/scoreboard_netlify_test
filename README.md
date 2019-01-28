@@ -1,4 +1,4 @@
-##Deploy
+## Deploy
 
 using Netlify.  drag and drop build folder into online app and it deploys.
 can also use netlify-cli: `netlify deploy`
@@ -16,3 +16,5 @@ if you have problems with 404's and redirects on netlify do the following:
 create `build/_redirects` file
 add `/*    /index.html   200`
 use `netlify deploy` again
+
+see `https://5c4f7ed76c510b288c97559f--focused-borg-445dc8.netlify.com/`
