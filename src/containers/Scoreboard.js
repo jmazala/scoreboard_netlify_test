@@ -32,7 +32,6 @@ class Scoreboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     players: state.players,
     highScore: state.highScore
