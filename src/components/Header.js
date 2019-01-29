@@ -5,8 +5,6 @@ import Stopwatch from './Stopwatch';
 
 class Header extends Component {
   render() {
-    console.log(this.props);
-    
     const { players } = this.props;
     return (<header>
       <Stats players={players} />
