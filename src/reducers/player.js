@@ -47,19 +47,13 @@ const player = (state = initialState, action) => {
         ...newState.players.slice(0, action.index),
         ...newState.players.slice(action.index + 1)
       ];
+      
       newState.highScore = Math.max(...newState.players.map(i => i.score));
       return newState;
 
     case PlayerActionTypes.UPDATE_PLAYER_SCORE:
-      newState.players = newState.players.map((player, index) => {
-        if (index === action.index) {
-          player.score += action.delta;
-          newState.highScore = Math.max(newState.highScore, player.score);
-        }
-
-        return player;
-      });
-
+      newState.players[action.index].score += action.delta;
+      newState.highScore = Math.max(newState.highScore, newState.players[action.index].score);
       return newState;
 
     default:
