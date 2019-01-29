@@ -9,12 +9,11 @@ import Player from '../components/Player';
 
 class Scoreboard extends Component {
   render() {
-    const { dispatch, players } = this.props;
+    const { dispatch, players, highScore } = this.props;
     const addPlayer = bindActionCreators(PlayerActionCreators.addPlayer, dispatch);
     const removePlayer = bindActionCreators(PlayerActionCreators.removePlayer, dispatch);
     const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
 
-    const highScore = Math.max(...players.map(i => i.score));
     const playerComponents = players.map((player, index) => {
       return <Player highScore={highScore} index={index} name={player.name} score={player.score} key={player.name}
         updatePlayerScore={updatePlayerScore} removePlayer={removePlayer} />
@@ -33,8 +32,10 @@ class Scoreboard extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    players: state
+    players: state.players,
+    highScore: state.highScore
   };
 };
 
