@@ -6,22 +6,22 @@ export class Provider extends Component {
   state = {
     players: [
       {
-        name: "Leonardo",
+        name: 'Leonardo',
         id: 1,
         score: 0
       },
       {
-        name: "Rafael",
+        name: 'Rafael',
         id: 2,
         score: 0
       },
       {
-        name: "Donatello",
+        name: 'Donatello',
         id: 3,
         score: 0
       },
       {
-        name: "Michaelangelo",
+        name: 'Michaelangelo',
         id: 4,
         score: 0
       }
@@ -31,13 +31,21 @@ export class Provider extends Component {
   lastPlayerId = 4;
   highScore = 0;
 
-  handleScoreChange = (index, delta) => {
+  handleScoreChange = (id, delta) => {
     this.setState(prevState => {
-      const newScore = prevState.players[index].score += delta;
-      this.highScore = Math.max(this.highScore, newScore);
-      return { score: newScore };
+      const players = prevState.players.map(player => {
+        if (player.id === id) {
+          const newScore = player.score += delta;
+          this.highScore = Math.max(this.highScore, newScore);
+          player.score = newScore;
+        }
+
+        return player;
+      });
+
+      return { players };
     });
-  }
+  };
 
   handleAddPlayer = (name) => {
     this.setState(prevState => {

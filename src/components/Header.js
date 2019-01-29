@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Stats from './Stats';
 import Stopwatch from './Stopwatch';
 
-const Header = ({ title }) => {
+const Header = ({ players, title }) => {
   return (
     <header>
-      <Stats />
+      <Stats players={players}/>
       <h1>{title}</h1>
       <Stopwatch />
     </header>
